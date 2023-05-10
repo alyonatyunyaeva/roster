@@ -1,4 +1,5 @@
 import {
+    format,
     formatDuration,
     intervalToDuration,
     differenceInYears,
@@ -26,3 +27,7 @@ export const calculateDifInYears = (value: string) => {
 export const isFutureDate = (time: Date) => {
     return isAfter(time, new Date());
 };
+
+export const currentYear = () => {
+    return format(new Date(), 'yyyy')
+}

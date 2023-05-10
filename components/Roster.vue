@@ -6,13 +6,9 @@
         <el-table :data="filterTableData" style="width: 100%">
             <el-table-column sortable label="Name" prop="name" />
             <el-table-column sortable label="Surname" prop="surname" />
-            <el-table-column sortable label="EmploymentDate" prop="employmentDate" width="180" />
-            <el-table-column sortable label="Experience" prop="experience" width="180">
-                <template #default="scope">{{ calculateDifInYears(scope.row.employmentDate) }}</template>
-            </el-table-column>
-            <el-table-column sortable label="Age" width="130">
-                <template #default="scope">{{ calculateDifInYears(scope.row.birthdate) }}</template>
-            </el-table-column>
+            <el-table-column sortable label="Employment Date" prop="employmentDate" width="180" />
+            <el-table-column sortable label="Experience" prop="experience" width="180"></el-table-column>
+            <el-table-column sortable label="Age" prop="age" width="130"></el-table-column>
             <el-table-column label="Address" prop="address" />
             <el-table-column align="right" width="130">
                 <template #default="scope">
@@ -39,13 +35,13 @@ import {
 } from '@element-plus/icons-vue'
 import { IEmployee } from '~/types';
 
-const { employees, removeEmployee } = useGetEmpoyees()
+const { employees, employeesEnriched, removeEmployee } = useGetEmpoyees()
 const { setEmployeeDetail } = useEmpoyeeDetail()
 const router = useRouter();
 const search = ref('')
 
 const filterTableData = computed(() =>
-    employees.value.filter(
+    employeesEnriched.value.filter(
         (data) =>
             !search.value ||
             data.name.toLowerCase().includes(search.value.toLowerCase()) ||
@@ -61,7 +57,7 @@ const navigateToEditPage = (id: string) => {
 };
 
 const handleEdit = (index: number, row: IEmployee) => {
-    setEmployeeDetail(row)
+    setEmployeeDetail(employees.value[index])
     navigateToEditPage(row.id || '')
 }
 const handleDelete = (index: number, row: IEmployee) => {
@@ -83,6 +79,6 @@ const handleDelete = (index: number, row: IEmployee) => {
 
 .search-container {
     width: 40%;
-    padding: 10px 0 20px;
+    padding: 10px 0;
 }
 </style>

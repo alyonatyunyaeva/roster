@@ -26,7 +26,7 @@ const newEmployee = useState<IEmployee | null>('newEmployee', () => initialState
 const handleCreate = async () => {
     if (newEmployee.value) {
         await createEmployee(newEmployee.value)
-        newEmployee.value = null
+        newEmployee.value = initialState
         router.back();
     }
 }
