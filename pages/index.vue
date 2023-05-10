@@ -1,7 +1,10 @@
 <template>
     <div class="roster-container">
         <div class="add-button">
-            <el-button circle :icon="Plus" @click="handleAddEmployee"></el-button>
+            <el-button circle size="large" @click="handleAddEmployee">
+                <el-icon :size="20">
+                    <Plus />
+                </el-icon></el-button>
         </div>
         <Roster></Roster>
     </div>
@@ -26,7 +29,7 @@ onMounted(async () => {
 
 </script>
 
-<style>
+<style scoped lang="scss">
 .roster-container {
     display: flex;
     flex-direction: column;
@@ -36,5 +39,9 @@ onMounted(async () => {
     display: inline-flex;
     justify-content: flex-end;
     width: 90%;
+
+    .el-button {
+        border: 1.5px solid #82848a;
+    }
 }
 </style>

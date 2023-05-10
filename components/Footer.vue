@@ -34,7 +34,7 @@
 
 <style scoped lang="scss">
 .footer {
-    background-color: #faf4ec;
+    background-color: #c0c4cc;
     font-weight: 300;
     padding: 40px 30px 10px;
 }
