@@ -6,7 +6,6 @@ export default function () {
 	const getEmployees = async (): Promise<void> => {
 		try {
 			const doc = await getEmployeesQuery();
-			// @ts-ignore
 			employees.value = doc;
 			console.log("employees.value", employees.value);
 		} catch (error: unknown) {

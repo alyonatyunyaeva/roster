@@ -1,8 +1,11 @@
 <template>
-    <div>
-        <EmployeeForm v-if="newEmployee" :employee=newEmployee></EmployeeForm>
-        <el-button @click="handleCreate">Create employee</el-button>
-    </div>
+    <NuxtLayout name="form-layout">
+        <template #header> Create employee </template>
+
+        <EmployeeForm v-if="newEmployee" :employee=newEmployee @submit="handleCreate" button-title="Create employee">
+        </EmployeeForm>
+
+    </NuxtLayout>
 </template>
 <script setup lang="ts">
 import { IEmployee } from '~/types';
@@ -12,11 +15,11 @@ const { createEmployee } = useEmpoyeeDetail()
 
 const router = useRouter();
 const initialState = {
-    name: 'Олеся',
-    surname: 'Вячеславова',
-    age: 71,
-    address: 'Москва, новые куличики',
-    employmentDate: '11.12.2222',
+    name: '',
+    surname: '',
+    address: '',
+    employmentDate: '',
+    birthdate: '',
 }
 const newEmployee = useState<IEmployee | null>('newEmployee', () => initialState)
 

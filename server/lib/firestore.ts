@@ -10,7 +10,9 @@ import {
 } from "firebase/firestore";
 import { firestoreDb } from "./firebase";
 
-export const queryByCollection = async <T>(colName: string): Promise<T> => {
+export const queryByCollection = async <T>(
+	colName: string
+): Promise<Array<T>> => {
 	const colRef = collection(firestoreDb, colName);
 	const snapshot = await getDocs(colRef);
 	const docs = Array.from(snapshot.docs).map((doc) => {
@@ -18,7 +20,7 @@ export const queryByCollection = async <T>(colName: string): Promise<T> => {
 			...doc.data(),
 			id: doc.id,
 		};
-	}) as T;
+	}) as Array<T>;
 
 	return docs;
 };

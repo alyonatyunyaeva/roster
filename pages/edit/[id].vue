@@ -1,9 +1,12 @@
 <template>
-    <div>
-        <EmployeeForm v-if="employeeDetail" :employee=employeeDetail></EmployeeForm>
-        <el-button @click="handleSave">Save changes</el-button>
-    </div>
+    <NuxtLayout name="form-layout">
+        <template #header> Edit employee </template>
+
+        <EmployeeForm v-if="employeeDetail" :employee=employeeDetail @submit="handleSave" button-title="Save changes">
+        </EmployeeForm>
+    </NuxtLayout>
 </template>
+
 <script setup lang="ts">
 
 const { employeeDetail, getEmployeeDetail, updateEmployeeDetail } = useEmpoyeeDetail()
@@ -17,7 +20,6 @@ const handleSave = async () => {
         router.back();
     }
 }
-
 
 onMounted(() => {
     if (!employeeDetail.value) {
