@@ -10,7 +10,7 @@ export default function () {
 		"employeeDetail",
 		() => null
 	);
-	const setEmployeeDetail = (data: IEmployee) => {
+	const setEmployeeDetail = (data: IEmployee | null) => {
 		employeeDetail.value = data;
 	};
 	const getEmployeeDetail = async (id: string) => {
@@ -18,7 +18,7 @@ export default function () {
 			const employee = await getEmployeeQuery(id);
 			employeeDetail.value = employee;
 		} catch (e) {
-			console.log(e);
+			console.error(e);
 		}
 	};
 	const updateEmployeeDetail = (data: IEmployee) => {

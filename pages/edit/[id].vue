@@ -9,14 +9,14 @@
 
 <script setup lang="ts">
 
-const { employeeDetail, getEmployeeDetail, updateEmployeeDetail } = useEmpoyeeDetail()
+const { employeeDetail, setEmployeeDetail, getEmployeeDetail, updateEmployeeDetail } = useEmployeeDetail()
 const route = useRoute();
 const router = useRouter();
 
 const handleSave = async () => {
     if (employeeDetail.value) {
         await updateEmployeeDetail(employeeDetail.value)
-        employeeDetail.value = null
+        setEmployeeDetail(null)
         router.back();
     }
 }

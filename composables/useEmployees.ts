@@ -3,7 +3,7 @@ import { IEmployee } from "~/types";
 
 export default function () {
     const employees = useState<IEmployee[]>("employees", () => []);
-    const employeesEnriched = computed(() => {
+    const employeesFull = computed(() => {
         return employees.value.map((employee) => {
             return {
                 ...employee,
@@ -34,7 +34,7 @@ export default function () {
 
     return {
         employees,
-        employeesEnriched,
+        employeesFull,
         getEmployees,
         removeEmployee,
     };

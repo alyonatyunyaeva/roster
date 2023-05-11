@@ -11,7 +11,7 @@
 import { IEmployee } from '~/types';
 
 
-const { createEmployee } = useEmpoyeeDetail()
+const { createEmployee } = useEmployeeDetail()
 
 const router = useRouter();
 const initialState = {

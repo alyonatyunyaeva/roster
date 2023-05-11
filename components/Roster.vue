@@ -24,8 +24,6 @@
     </div>
 </template>
 
-
-  
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
 import { useRouter } from "vue-router";
@@ -35,13 +33,13 @@ import {
 } from '@element-plus/icons-vue'
 import { IEmployee } from '~/types';
 
-const { employees, employeesEnriched, removeEmployee } = useGetEmpoyees()
-const { setEmployeeDetail } = useEmpoyeeDetail()
+const { employees, employeesFull, removeEmployee } = useEmployees()
+const { setEmployeeDetail } = useEmployeeDetail()
 const router = useRouter();
 const search = ref('')
 
 const filterTableData = computed(() =>
-    employeesEnriched.value.filter(
+    employeesFull.value.filter(
         (data) =>
             !search.value ||
             data.name.toLowerCase().includes(search.value.toLowerCase()) ||

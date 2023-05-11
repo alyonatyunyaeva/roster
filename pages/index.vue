@@ -14,7 +14,7 @@
 import {
     Plus
 } from '@element-plus/icons-vue'
-const { getEmployees } = useGetEmpoyees()
+const { getEmployees } = useEmployees()
 const router = useRouter();
 
 const handleAddEmployee = () => {
